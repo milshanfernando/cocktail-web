@@ -3,6 +3,113 @@
 @import "tailwindcss";
 
 @font-face {
+  font-family: "Modern Negra";
+  src: url("/fonts/Modern Negra Demo.ttf") format("truetype");
+}
+
+@theme {
+  --color-yellow: #e7d393;
+  --color-white-100: #efefef;
+  --font-sans: "Mona Sans", sans-serif;
+  --font-modern-negra: "Modern Negra", sans-serif;
+  --font-serif: "DM Serif Text", serif;
+}
+
+html,
+body {
+  width: 100%;
+  background-color: black;
+  color: white;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+@utility text-gradient {
+  background: linear-gradient(to bottom, #ffffff, #898989);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@layer components {
+  main {
+    @apply w-full overflow-x-hidden;
+  }
+
+  nav {
+    @apply fixed z-50 w-full px-10;
+
+    div {
+      @apply flex md:flex-row flex-col md:justify-between items-center gap-5 py-5 lg:px-0 px-5 container mx-auto;
+    }
+
+    ul {
+      @apply flex md:flex-row flex-col lg:gap-12 gap-7;
+
+      li {
+        @apply text-center;
+      }
+    }
+  }
+
+  .noisy {
+    @apply absolute inset-0 size-full bg-[url("/images/noise.png")];
+  }
+
+  #hero {
+    @apply relative z-10 min-h-dvh w-full border border-transparent;
+
+    h1 {
+      @apply md:mt-32 mt-40 text-8xl md:text-[15vw] leading-none text-center font-modern-negra;
+    }
+
+    .left-leaf {
+      @apply absolute left-0 md:top-10 md:bottom-auto -bottom-20 md:w-fit w-1/3;
+    }
+
+    .right-leaf {
+      @apply absolute right-0 md:top-30 md:bottom-auto -bottom-10 md:w-fit w-1/3;
+    }
+
+    .body {
+      @apply container mx-auto absolute left-1/2 -translate-x-1/2 lg:bottom-20 top-auto md:top-[30vh] flex justify-between items-end px-10;
+
+      .content {
+        @apply flex lg:flex-row flex-col w-full gap-10 justify-between items-center lg:items-end mx-auto;
+
+        p:nth-of-type(2) {
+          @apply font-modern-negra md:text-4xl xl:text-6xl text-yellow max-w-xl;
+        }
+
+        p:last-of-type {
+          @apply 2xl:text-start text-center;
+        }
+
+        .view-cocktails {
+          @apply space-y-5 text-lg lg:max-w-2xs md:max-w-xs w-full;
+
+          p {
+            @apply text-left;
+          }
+
+          a {
+            @apply font-semibold opacity-80 2xl:text-start text-center hover:text-yellow;
+          }
+        }
+      }
+    }
+  }
+}
+
+video {
+  @apply w-full md:h-[80%] h-1/2 absolute bottom-0 left-0 md:object-contain object-bottom object-cover;
+}
+
+/* @font-face {
     font-family: "Modern Negra";
     src: url("/fonts/Modern Negra Demo.ttf") format("truetype");
 }
@@ -373,4 +480,4 @@ body {
             @apply absolute bottom-0 right-0 lg:w-96 w-1/3 pointer-events-none;
         }
     }
-}
+} */
